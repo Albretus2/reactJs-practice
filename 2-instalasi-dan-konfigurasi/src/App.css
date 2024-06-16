@@ -1,0 +1,14 @@
+button {
+  border: none;
+  box-shadow: 1px 5px rgb(36, 36, 36);
+  margin: 10px;
+  background-color: beige;
+}
+
+.btn-likes {
+  background-color: antiquewhite;
+}
+
+.btn-dislikes {
+  background-color: rgb(245, 121, 121);
+}

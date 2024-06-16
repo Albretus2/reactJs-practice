@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BELAJAR REACT JS</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        button {
+            border: none;
+            box-shadow: 1px 5px rgb(36, 36, 36);
+            margin: 10px;
+            background-color: beige;
+        }
+
+        .btn-likes {
+            background-color: antiquewhite;
+        }
+
+        .btn-dislikes {
+            background-color: rgb(245, 121, 121);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+
+        // const SayHelo = ({ name, kelas }) => {
+        //     return (
+        //         <>
+        //             <h1>hello world, nama saya {name ? name : 'dayat'}</h1>
+        //             <p>i am a programmer</p>
+        //             <p>saya kelas {kelas ? kelas : '5 sd'}</p>
+        //         </>)
+        // }
+
+
+        // const HomePage = () => {
+        //     const students = ['alber', 'farhin', 'furqon']
+
+        //     const [likes, setLikes] = React.useState(0)
+        //     const [dislikes, setDislikes] = React.useState(0)
+
+        //     function handelClick() {
+        //         setLikes(likes + 1)
+        //     }
+
+        //     function handelDislikes() {
+        //         setDislikes(dislikes + 1)
+        //     }
+
+        //     return (<>
+        //         <SayHelo />
+        //         <SayHelo name="toni" kelas='XII' />
+        //         <ul>
+        //             {students.map(e => (
+        //                 <li key={e}>{e}</li>
+        //             ))}
+        //         </ul>
+
+        //         <button className='btn-likes' onClick={handelClick}>like 👍🏼 {likes}</button>
+        //         <button className='btn-dislikes' onClick={handelDislikes}>dislike 👎🏼 ({dislikes})</button>
+
+
+        //         <Latihan />
+        //     </>)
+        // }
+        // root.render(<HomePage />)
+
+
+        const Latihan = () => {
+            const [hasil, setHasil] = React.useState(0)
+
+            return (
+                <>
+                    <h4>- Chalange React dari pa shandika 🤡</h4>
+                    <Tombol type='-' set={setHasil} result={hasil} />
+                    <span>{hasil}</span>
+                    <Tombol type='+' set={setHasil} result={hasil} />
+                    <TombolReset set={setHasil} result={hasil}/>
+
+                </>
+            )
+
+        }
+
+        const TombolReset = ({  set, result }) => {
+            function btnReset() {
+                set(result = 0)
+            }
+
+            if (result == 'done') {
+                return (<button onClick={btnReset}>Reset</button>)
+            } else {
+                return (<button onClick={btnReset} disabled>Reset</button>)
+            }
+        }
+
+        const Tombol = ({ type, set, result }) => {
+
+            function btnMin() {
+                (result > 0) ? set(result - 1) : set(result = 'done')
+            }
+            function btnPlus() {
+                (result < 10) ? set(result + 1) : set(result = 'done')
+            }
+
+            function kondisi() {
+                if (result != 'done') {
+                    return (<button onClick={type == '-' ? btnMin : btnPlus}> {type ? type : ''} </button>)
+                } else {
+                    return (<button disabled onClick={type == '-' ? btnMin : btnPlus}> {type ? type : ''} </button>)
+                    // if (type == 'reset') return btn = (<button onClick={btnReset} > reset </button>)
+                }
+            }
+
+            return (
+                <>
+                    {kondisi()}
+                </>
+            )
+        }
+
+        root.render(<Latihan />)
+        
+        // function HomePage() {
+        //     function Tombol({ title }) {
+        //         if (angka == 10 || angka < 0) {
+        //             return (<button onClick={title == "-" ? Kurang : Tambah} disabled>{title ? title : ""}</button>)
+        //         } else {
+        //             return (<button onClick={title == "-" ? Kurang : Tambah}>{title ? title : ""}</button>)
+        //         }
+        //     }
+
+        //     function Tambah() {
+        //         setAngka(angka + 1);
+        //     }
+
+        //     function Kurang() {
+        //         setAngka(angka - 1);
+        //     }
+
+        //     function Reset() {
+        //         setAngka(0);
+        //     }
+
+        //     function ResetBtn() {
+        //         if (angka == 10 || angka < 0) {
+        //             return (<button onClick={Reset}>Reset</button>)
+        //         } else {
+        //             return (<button onClick={Reset} disabled>Reset</button>)
+        //         }
+        //     }
+
+        //     const [angka, setAngka] = React.useState(0);
+
+        //     return (
+        //         <>
+        //             <Tombol title="-" />
+        //             <span >{angka == 10 || angka < 0 ? "done!" : angka}</span>
+        //             <Tombol title="+" />
+        //             <br />
+        //             <ResetBtn />
+        //         </>
+        //     )
+        // }
+
+        // root.render(<HomePage />);
+
+    </script>
+</body>
+
+</html>
